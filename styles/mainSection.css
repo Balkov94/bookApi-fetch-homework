@@ -1,0 +1,232 @@
+body{
+     background-image: url("../assets/library-background.avif");  
+}
+
+header{
+     background-color: rgb(0, 0, 0);
+     width: 80%;
+     margin: auto;
+}
+header ul{
+     display: flex;
+     flex-direction: row;
+     gap: 18px;
+     height: 10vh;
+     align-items: center;
+     padding-left:16px;
+}
+header ul li a:hover{
+     color: greenyellow;
+     font-size: 20px;
+     transition: all .5s ease;
+}
+
+#wrapper{
+     width: 80%;
+     display: flex;
+     flex-direction: column;
+     margin: auto;
+     height: 100vh;
+    
+}
+
+#main-section{
+     width: 100%;
+     height: 100vh;
+     overflow-y: scroll;
+     font-size: 22px;
+     
+        
+}
+
+#search-container{
+     padding-bottom: 18px;
+     background-color: black;   
+     border-bottom: 2px solid gray;
+     width: 80%;
+     margin: auto;
+}
+#search-container h2,form{
+     text-align: center;
+     padding-bottom: 12px;   
+}
+#search{
+   border: none;
+   height: 30px;
+   width: 40%;
+   text-align: center;
+   border: none;
+   background-color: rgb(149, 88, 2);
+   font-size: 20px;
+   font-style: bold;
+   color:black
+}
+#search:focus{
+     background-color: rgb(254, 131, 0);
+}
+
+#searchBy{
+     width: fit-content;
+     height: 30px;
+     font-size: 18px;
+     padding-left: 6px;
+     padding-right:6px;
+    
+}
+
+/* _________________________________ */
+.cards-container{
+     background-color: black;
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     padding-top: 18px;
+     padding: 20px;
+     padding-bottom: 15vh;
+     gap: 40px 32px;
+}
+
+/* card  */
+.card{
+     width: 300px;
+     display: flex;
+     flex-direction: column;
+     border: 2px solid rgb(193, 193, 193);
+     position: relative;
+}
+.card-img{
+     width:296px;
+     height: 400px;   
+}
+.card-text{
+     width: 100%;
+     height: 170px;
+     overflow-y: auto;
+     padding-bottom: 50px;
+    /* ? some fetched card gts problem with description*/
+    word-break: break-word;
+    text-overflow: clip;
+}
+.card-title-desc{
+     height: 270px;
+}
+
+.card-title{
+     padding-top: 10px;
+     padding-bottom: 10px;
+     font-size: 22px;
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     background-color: rgb(94, 93, 93);
+     text-align: center;  
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+/* !!!!!!!!!!!!fix for long titles */
+.card-title:hover{
+     white-space: normal;
+     word-break: break-word;
+     text-overflow: clip;
+}
+
+.card-author-year{
+     position: absolute;
+     bottom: 28px;
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     background-color: rgb(94, 93, 93);
+   
+}
+.card-buttons{
+     display: flex;
+     flex-direction: row;
+     background-color: rgb(94, 93, 93);
+     position: absolute;
+     bottom:0px;
+     width: 100%;
+     height: 28px;
+
+}
+.card button{
+     width: 50%;
+     height: 100%;
+     font-size: 18px;
+     background-color: cadetblue;
+     border: none;
+}
+.card button:hover{
+     background-color: rgb(94, 195, 198);
+}
+
+/* Pegination styles */
+#pagination-container{
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     background-color: black;
+     padding-left: 16px;
+     padding-right: 16px;
+     padding-top:8px
+}
+
+/* not found div */
+.notFound{
+     width: 100%;
+     height: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     color: red;
+     font-size: 40px;
+}
+
+/* loader spiner */
+.loader-container{
+     background-color: black;
+     width: 100%;
+     height: 80vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     /* display: none; */
+}
+.loader {
+     border: 16px solid #f3f3f3;
+     border-radius: 50%;
+     border-top: 16px solid #1481c9;
+     width: 100px;
+     height: 100px;
+     -webkit-animation: spin 2s linear infinite; /* Safari */
+     animation: spin 1s linear infinite;
+   }
+   
+   /* Safari */
+   @-webkit-keyframes spin {
+     0% { -webkit-transform: rotate(0deg); }
+     100% { -webkit-transform: rotate(360deg); }
+   }
+   
+   @keyframes spin {
+     0% { transform: rotate(0deg); }
+     100% { transform: rotate(360deg); }
+   }
+
+ footer{  
+     height: 5vh;
+     position: fixed;
+     background-color: black;
+     opacity: 0.7;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position:fixed;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     width: 80%;
+     margin: 0 auto;
+ }
+

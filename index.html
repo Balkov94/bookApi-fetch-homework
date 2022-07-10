@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="styles/reset.css">
+     <link rel="stylesheet" href="styles/mainSection.css">
+     <title>n.Balkov- google Books API</title>
+</head>
+
+<body>
+     <header>
+          <ul>
+               <li>
+                    <a href="#Home">Home</a>
+               </li>
+               <li>
+                    <a href="#Favourites">Favourites</a>
+               </li>
+               <li>
+                    <a href="https://developers.google.com/books/docs/v1/using#PerformingSearch" target="_blank">Google
+                         Book Api - documentation</a>
+               </li>
+
+          </ul>
+     </header>
+
+     <div id="search-container">
+          <h2>Search book by
+               <select name="searhcBy" id="searchBy">
+                    <option value="title" name="searhcBy" selected>title</option>
+                    <option value="author" name="searhcBy">author</option>
+                    <option value="publisher" name="searhcBy">publisher</option>
+               </select>
+
+          </h2>
+          <form action="submit">
+               <input type="text" name="search" id="search" required>
+               <input type="button" value="search" id="searchBtn">
+
+          </form>
+     </div>
+
+     <div id="wrapper">
+               <div id="pagination-container">
+                    <div>Results: <span id="resultNum">1</span></div>
+                    <div>Page:
+                         <button id="prevPage">&lt;</button>
+                         <span id="pageNum" data-index='0'>1</span>
+                         <button id="nextPage">&gt;</button>
+                    </div>
+               </div>
+               
+               <div class="cards-container">
+                    <div class="card">
+                         <img class="card-img" src="https://images-na.ssl-images-amazon.com/images/I/91w+VNB7wwL.jpg"
+                              alt="Card image cap">
+                         <div class="card-title-desc">
+                              <h5 class="card-title" data-test="test">
+                                   Example card
+                              </h5>
+                              <p class="card-text">
+                                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                   Incidunt excepturi nulla officia ad esse sit modi dolor
+                                   voluptatem eum
+                                   praesentium ipsam provident commodi culpa, animi omnis
+                                   , voluptas
+                                   sint ut explicabo?
+                              </p>
+                         </div>
+                         <ul class="card-author-year">
+                              <li class="list-group-item">author: - </li>
+                              <li class="list-group-item">year: - </li>
+                         </ul>
+                         <div class="card-buttons">
+                              <button>Like</button>
+                              <button>Dislike</button>
+                         </div>
+                    </div> 
+
+                   <!-- fetching data -->
+  
+               </div>
+
+              
+     </div>
+     <footer>
+          &copy; webpage created by Nikola Balkov 
+     </footer>
+
+   
+
+  
+
+     
+
+
+
+
+
+
+
+     <!-- functions -->
+     <script src="scripts/fetch.js"></script>
+</body>
+
+</html>
