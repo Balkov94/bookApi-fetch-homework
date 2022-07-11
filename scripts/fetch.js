@@ -48,30 +48,27 @@ function addloader() {
 
 
 function fetchData() {
-     // 1. clear wrapper and add loading animation
-     cardsContainer.innerHTML = "";
-     let loader = addloader();
-     cardsContainer.append(loader);
-
      let inputText = search.value;
      let qParam = `in${searchBy.value}`; //title / author / publisher
-
-     // 2. Fetch url validation !!!! CARE with SPACE char
+     // 1. Fetch url validation !!!! CARE with SPACE char
      if (typeof inputText == 'undefined' || inputText.length < 3) {
           alert(`You have to enter min 3 chars to search!`);
           return;
      }
-     console.log(`input:${inputText}`);
-     console.log(`qParam:${qParam}`);
-     console.log(`(for pagination)data.index:${pageNum.dataset.index}`);
-     // fix searching title need "" because of ENCODING SPACE 
+     // 2. clear wrapper and add loading animation
+     cardsContainer.innerHTML = "";
+     let loader = addloader();
+     cardsContainer.append(loader);
+
+   
+     //* fix searching title need "" because of ENCODING SPACE 
      if (qParam == "intitle") {
           inputText = `\"${inputText}\"`;
-          console.log(`!!! ${inputText}`);
      }
      else if (inputText.includes(" ")) {
           inputText = inputText.replaceAll(" ", "-")
      }
+
      // 3 fetch data
      fetch(`https://www.googleapis.com/books/v1/volumes?q=${qParam}:${inputText}&printType=books&startIndex=${pageNum.dataset.index}&maxResults=10`)
           .then(res => res.json())
@@ -79,12 +76,8 @@ function fetchData() {
                console.log(data);
                // print total result
                resultNum.innerText = `${data.kind.slice(6)} ${data.totalItems}`;
-
                if (data.totalItems == 0) {
-                    let notfound = document.createElement("div");
-                    notfound.innerText = `Sorry, there isn't any valume with "${inputText}" ${searchBy.value}`;
-                    notfound.className = "notFound";
-                    cardsContainer.append(notfound);
+                    ErrorPage();
                     return;
                }
                // add curr card
@@ -99,6 +92,13 @@ function fetchData() {
 
           }
           )
+     // error div -> book not found
+     function ErrorPage() {
+          let notfound = document.createElement("div");
+          notfound.className = "notFound";
+          notfound.innerText = `Sorry, there isn't any valume with "${inputText}" ${searchBy.value}`;
+          cardsContainer.append(notfound);
+     }
 }
 
 function createAppendCard(currBook) {
@@ -168,21 +168,22 @@ function createAppendCard(currBook) {
      cardsContainer.append(cardContainer)
 }
 
-// hash ruter
-let wrapper = document.getElementById("wrapper");
-let searchContainer = document.getElementById("search-container");
-window.addEventListener("hashchange", function () {
 
-     let hash = location.hash.slice(1);
-     switch (hash) {
-          case "Home":
-               wrapper.style.display = "flex";
-               searchContainer.style.display = "block"
-               break;
-          case "Favourites":
-               wrapper.style.display = "none";
-               searchContainer.style.display = "none"
-               break;
-     }
-});
+// * hash ruter - disabled for now ...
+// let wrapper = document.getElementById("wrapper");
+// let searchContainer = document.getElementById("search-container");
+// window.addEventListener("hashchange", function () {
+
+//      let hash = location.hash.slice(1);
+//      switch (hash) {
+//           case "Home":
+//                wrapper.style.display = "flex";
+//                searchContainer.style.display = "block"
+//                break;
+//           case "Favourites":
+//                wrapper.style.display = "none";
+//                searchContainer.style.display = "none"
+//                break;
+//      }
+// });
 
