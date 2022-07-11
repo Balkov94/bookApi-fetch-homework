@@ -45,6 +45,10 @@ function addloader() {
      return loaderWrapper;
 }
 
+search.addEventListener("click", () => {
+     search.value = "";
+})
+
 
 
 function fetchData() {
@@ -60,7 +64,7 @@ function fetchData() {
      let loader = addloader();
      cardsContainer.append(loader);
 
-   
+
      //* fix searching title need "" because of ENCODING SPACE 
      if (qParam == "intitle") {
           inputText = `\"${inputText}\"`;
@@ -96,7 +100,8 @@ function fetchData() {
      function ErrorPage() {
           let notfound = document.createElement("div");
           notfound.className = "notFound";
-          notfound.innerText = `Sorry, there isn't any valume with "${inputText}" ${searchBy.value}`;
+          notfound.innerText = `Sorry, there isn't any valume with 
+          "${inputText.replaceAll("\""," ").trim()}" ${searchBy.value}`;
           cardsContainer.append(notfound);
      }
 }
